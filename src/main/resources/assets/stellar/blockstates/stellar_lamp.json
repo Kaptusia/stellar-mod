@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "stellar:block/stellar_lamp"
+    },
+    "hanging=true": {
+      "model": "stellar:block/stellar_lamp_hanging"
+    }
+  }
+}

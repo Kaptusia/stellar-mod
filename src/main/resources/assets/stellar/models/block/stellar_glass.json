@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "stellar:block/stellar_glass"
+  }
+}

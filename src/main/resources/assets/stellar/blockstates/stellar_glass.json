@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "stellar:block/stellar_glass"
+    }
+  }
+}

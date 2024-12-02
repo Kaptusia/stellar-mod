@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "com.kaptusia.stellar.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AnvilBlockMixin",
+    "ItemEntityMixin"
+  ],
+  "client": [
+    "ItemRendererAccessor",
+    "ItemRendererMixin",
+    "ModelLoaderMixin"
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

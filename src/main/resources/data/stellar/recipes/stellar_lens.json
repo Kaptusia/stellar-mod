@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stellar_lens",
+  "pattern": [
+    " C ",
+    "CSC",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "S": {
+      "item": "stellar:stellar_glass"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "stellar:stellar_lens"
+  }
+}

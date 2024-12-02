@@ -1,0 +1,12 @@
+{
+  "item.stellar.stellar_crystal": "Stellar Crystal",
+  "item.stellar.stellar_powder": "Stellar Powder",
+  "item.stellar.stellar_glasses": "Stellar Glasses",
+  "item.stellar.stellar_lens": "Stellar Lens",
+
+  "block.stellar.stellar_glass": "Stellar Glass",
+  "block.stellar.kaptusia_plushie": "Kaptusia Plushie",
+  "block.stellar.stellar_lamp": "Stellar Lantern",
+
+  "itemgroup.stellar": "Stellar"
+}

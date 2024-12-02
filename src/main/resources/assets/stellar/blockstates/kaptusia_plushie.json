@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "stellar:block/kaptusia_plushie" },
+    "facing=west": { "model": "stellar:block/kaptusia_plushie", "y": 90 },
+    "facing=north": { "model": "stellar:block/kaptusia_plushie", "y": 180 },
+    "facing=east": { "model": "stellar:block/kaptusia_plushie", "y": 270}
+  }
+}

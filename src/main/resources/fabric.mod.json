@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "stellar",
+  "version": "${version}",
+  "name": "Stellar",
+  "description": ":3",
+  "authors": [
+    "Kaptusia"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "CC0-1.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.kaptusia.stellar.Stellar"
+    ],
+    "client": [
+      "com.kaptusia.stellar.StellarClient"
+    ],
+    "fabric-datagen": [
+      "com.kaptusia.stellar.StellarDataGenerator"
+    ]
+  },
+  "mixins": [
+    "stellar.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
