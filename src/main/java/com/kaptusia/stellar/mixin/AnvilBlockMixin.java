@@ -34,14 +34,14 @@ public class AnvilBlockMixin {
     )
     private void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity, CallbackInfo ci) {
         List<Entity> other = world.getOtherEntities(fallingBlockEntity.getVehicle(), new Box(pos));
-        for (int i = 0; i < other.size(); i++) {
+        for (Entity entity : other) {
             // item crafting part
-            if (other.get(i).getType() == EntityType.ITEM) {
-                if (((ItemEntity) other.get(i)).getStack().isOf(ModItems.STELLAR_CRYSTAL)) {
-                    other.get(i).kill();
-                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(ModItems.STELLAR_POWDER, ((ItemEntity) other.get(i)).getStack().getCount())));
+            if (entity.getType() == EntityType.ITEM) {
+                if (((ItemEntity) entity).getStack().isOf(ModItems.STELLAR_CRYSTAL)) {
+                    entity.kill();
+                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(ModItems.STELLAR_POWDER, ((ItemEntity) entity).getStack().getCount())));
                     spawnExplodingParticles(
-                            MinecraftClient.getInstance().world,
+                            world,
                             pos.getX() + 0.5,
                             pos.getY() + 0.0625,
                             pos.getZ() + 0.5,
@@ -54,34 +54,34 @@ public class AnvilBlockMixin {
                     world.playSound(MinecraftClient.getInstance().player, pos, soundEvent, SoundCategory.BLOCKS);
                 }
 
-                if (((ItemEntity) other.get(i)).getStack().isOf(Items.SUGAR_CANE)) {
-                    other.get(i).kill();
-                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.SUGAR, ((ItemEntity) other.get(i)).getStack().getCount())));
+                if (((ItemEntity) entity).getStack().isOf(Items.SUGAR_CANE)) {
+                    entity.kill();
+                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.SUGAR, ((ItemEntity) entity).getStack().getCount())));
                 }
 
-                if (((ItemEntity) other.get(i)).getStack().isOf(Items.CREEPER_HEAD)) {
-                    other.get(i).kill();
-                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.GUNPOWDER, ((ItemEntity) other.get(i)).getStack().getCount())));
+                if (((ItemEntity) entity).getStack().isOf(Items.CREEPER_HEAD)) {
+                    entity.kill();
+                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.GUNPOWDER, ((ItemEntity) entity).getStack().getCount())));
                 }
 
-                if (((ItemEntity) other.get(i)).getStack().isOf(Items.BLAZE_ROD)) {
-                    other.get(i).kill();
-                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.BLAZE_POWDER, ((ItemEntity) other.get(i)).getStack().getCount() * 2)));
+                if (((ItemEntity) entity).getStack().isOf(Items.BLAZE_ROD)) {
+                    entity.kill();
+                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.BLAZE_POWDER, ((ItemEntity) entity).getStack().getCount() * 2)));
                 }
 
-                if (((ItemEntity) other.get(i)).getStack().isOf(Items.BONE)) {
-                    other.get(i).kill();
-                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.BONE_MEAL, ((ItemEntity) other.get(i)).getStack().getCount() * 3)));
+                if (((ItemEntity) entity).getStack().isOf(Items.BONE)) {
+                    entity.kill();
+                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.BONE_MEAL, ((ItemEntity) entity).getStack().getCount() * 3)));
                 }
 
-                if (((ItemEntity) other.get(i)).getStack().isOf(Items.REDSTONE_BLOCK)) {
-                    other.get(i).kill();
-                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.REDSTONE, ((ItemEntity) other.get(i)).getStack().getCount() * 9)));
+                if (((ItemEntity) entity).getStack().isOf(Items.REDSTONE_BLOCK)) {
+                    entity.kill();
+                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.REDSTONE, ((ItemEntity) entity).getStack().getCount() * 9)));
                 }
 
-                if (((ItemEntity) other.get(i)).getStack().isOf(Items.GLOWSTONE)) {
-                    other.get(i).kill();
-                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.GLOWSTONE_DUST, ((ItemEntity) other.get(i)).getStack().getCount() * 4)));
+                if (((ItemEntity) entity).getStack().isOf(Items.GLOWSTONE)) {
+                    entity.kill();
+                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(Items.GLOWSTONE_DUST, ((ItemEntity) entity).getStack().getCount() * 4)));
                 }
             }
         }

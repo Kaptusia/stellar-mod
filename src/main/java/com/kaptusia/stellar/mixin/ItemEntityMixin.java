@@ -37,8 +37,8 @@ public abstract class ItemEntityMixin {
             double y = this.copy().getY();
             double z = this.copy().getZ();
             if (Math.ceil(Math.random() * 14) == 14 &&
-                    (MinecraftClient.getInstance().world.getTimeOfDay() / 1000) % 24.0 >= 13 &&
-                    (MinecraftClient.getInstance().world.getTimeOfDay() / 1000) % 24.0 <= 23) {
+                    (MinecraftClient.getInstance().world.getTimeOfDay() / 1000.0) % 24.0 >= 13 &&
+                    (MinecraftClient.getInstance().world.getTimeOfDay() / 1000.0) % 24.0 <= 23) {
                 int colorRandomizerRed = (int) ((Math.random() - 0.5) * 90);
                 int colorRandomizerGreen = (int) ((Math.random() - 0.5) * 90);
                 int colorRandomizerBlue = (int) ((Math.random() - 0.5) * 90);

@@ -2,7 +2,6 @@ package com.kaptusia.stellar.common.item.custom;
 
 import com.kaptusia.stellar.common.block.ModBlocks;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
@@ -61,10 +60,9 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
                     int i = this.getMaxUseTime(stack) - remainingUseTicks + 1;
                     boolean bl = i % 10 == 5;
                     boolean bl2 = i % 55 == 0 && i != 0;
-                    MinecraftClient client = MinecraftClient.getInstance();
                     if (bl) {
 
-                        if ((client.world.getTimeOfDay() / 1000) % 24.0 >= 13 && (client.world.getTimeOfDay() / 1000) % 24.0 <= 22) {
+                        if ((world.getTimeOfDay() / 1000.0) % 24.0 >= 13 && (world.getTimeOfDay() / 1000.0) % 24.0 <= 22) {
                             // bottom
                             spawnDustingParticles(
                                     world,
@@ -182,8 +180,8 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
                     if (bl2 &&
                             world.getBlockState(blockPos).getBlock().equals(Blocks.GLASS) &&
                             world.getLightLevel(LightType.SKY, blockPos) == 15 &&
-                            (client.world.getTimeOfDay() / 1000) % 24.0 >= 13 &&
-                            (client.world.getTimeOfDay() / 1000) % 24.0 <= 23
+                            (world.getTimeOfDay() / 1000.0) % 24.0 >= 13 &&
+                            (world.getTimeOfDay() / 1000.0) % 24.0 <= 23
                     ) {
                         spawnExplodingParticles(
                                 world,
@@ -206,8 +204,8 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
                     if (bl2 &&
                             (world.getBlockState(blockPos).getBlock().equals(Blocks.LANTERN) || world.getBlockState(blockPos).getBlock().equals(Blocks.SOUL_LANTERN)) &&
                             world.getLightLevel(LightType.SKY, blockPos) >= 13 &&
-                            (client.world.getTimeOfDay() / 1000) % 24.0 >= 13 &&
-                            (client.world.getTimeOfDay() / 1000) % 24.0 <= 23
+                            (world.getTimeOfDay() / 1000.0) % 24.0 >= 13 &&
+                            (world.getTimeOfDay() / 1000.0) % 24.0 <= 23
                     ) {
                         spawnExplodingParticles(
                                 world,
@@ -224,7 +222,7 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
 
                         world.setBlockState(blockPos, ModBlocks.STELLAR_LAMP.getStateWithProperties(world.getBlockState(blockPos)));
                         playerEntity.getItemCooldownManager().set(this, 10);
-                        stack.decrement(1);
+                        if (!((PlayerEntity) user).isCreative()) { stack.decrement(1); }
                     }
 
                 }
@@ -243,8 +241,8 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
     @Override
     public void spawnLateParticles(ScreenParticleHolder target, World level, float partialTick, ItemStack stack, float x, float y) {
         if (Math.ceil(Math.random() * 8) == 8 &&
-                (MinecraftClient.getInstance().world.getTimeOfDay() / 1000) % 24.0 >= 13 &&
-                (MinecraftClient.getInstance().world.getTimeOfDay() / 1000) % 24.0 <= 23) {
+                (level.getTimeOfDay() / 1000.0) % 24.0 >= 13 &&
+                (level.getTimeOfDay() / 1000.0) % 24.0 <= 23) {
             int colorRandomizerRed = (int) ((Math.random() - 0.5) * 90);
             int colorRandomizerGreen = (int) ((Math.random() - 0.5) * 90);
             int colorRandomizerBlue = (int) ((Math.random() - 0.5) * 90);

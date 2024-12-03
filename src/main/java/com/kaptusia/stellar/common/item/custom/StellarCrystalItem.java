@@ -1,6 +1,5 @@
 package com.kaptusia.stellar.common.item.custom;
 
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -23,8 +22,8 @@ public class StellarCrystalItem extends Item implements ParticleEmitterHandler.I
     @Override
     public void spawnLateParticles(ScreenParticleHolder target, World level, float partialTick, ItemStack stack, float x, float y) {
         if (Math.ceil(Math.random() * 8) == 8 &&
-                (MinecraftClient.getInstance().world.getTimeOfDay() / 1000) % 24.0 >= 13 &&
-                (MinecraftClient.getInstance().world.getTimeOfDay() / 1000) % 24.0 <= 23) {
+                (level.getTimeOfDay() / 1000.0) % 24.0 >= 13 &&
+                (level.getTimeOfDay() / 1000.0) % 24.0 <= 23) {
             int colorRandomizerRed = (int) ((Math.random() - 0.5) * 90);
             int colorRandomizerGreen = (int) ((Math.random() - 0.5) * 90);
             int colorRandomizerBlue = (int) ((Math.random() - 0.5) * 90);

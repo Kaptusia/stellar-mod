@@ -3,7 +3,6 @@ package com.kaptusia.stellar.common.block.entity;
 import com.kaptusia.stellar.common.block.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import team.lodestar.lodestone.registry.common.particle.LodestoneParticleRegistry;
@@ -21,8 +20,8 @@ public class StellarLampBlockEntity extends BlockEntity {
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, StellarLampBlockEntity blockEntity) {
-        if ((MinecraftClient.getInstance().world.getTimeOfDay() / 1000) % 24.0 >= 13 &&
-                ((MinecraftClient.getInstance().world.getTimeOfDay() / 1000) % 24.0 <= 23)) {
+        if ((world.getTimeOfDay() / 1000.0) % 24.0 >= 13 &&
+                ((world.getTimeOfDay() / 1000.0) % 24.0 <= 23)) {
 
             int colorRandomizerRed = (int) ((Math.random() - 0.5) * 30);
             int colorRandomizerGreen = (int) ((Math.random() - 0.5) * 30);
