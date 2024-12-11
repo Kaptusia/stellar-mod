@@ -2,9 +2,9 @@ package com.kaptusia.stellar.common.item.custom;
 
 import com.kaptusia.stellar.common.block.ModBlocks;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.BrushItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -56,6 +56,7 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
             HitResult hitResult = this.getHitResult(user);
             if (hitResult instanceof BlockHitResult blockHitResult) {
                 if (hitResult.getType() == HitResult.Type.BLOCK) {
+
                     BlockPos blockPos = blockHitResult.getBlockPos();
                     int i = this.getMaxUseTime(stack) - remainingUseTicks + 1;
                     boolean bl = i % 10 == 5;
@@ -63,113 +64,145 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
                     if (bl) {
 
                         if ((world.getTimeOfDay() / 1000.0) % 24.0 >= 13 && (world.getTimeOfDay() / 1000.0) % 24.0 <= 22) {
-                            // bottom
+                            //bottom
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX(),
-                                    blockPos.getY(),
-                                    blockPos.getZ());
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 1,
-                                    blockPos.getY(),
-                                    blockPos.getZ());
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX(),
-                                    blockPos.getY(),
-                                    blockPos.getZ() + 1);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 1,
-                                    blockPos.getY(),
-                                    blockPos.getZ() + 1);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ
+                            );
 
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 0.5,
-                                    blockPos.getY(),
-                                    blockPos.getZ());
+                                    blockPos.getX() + ((world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX) / 2),
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 1,
-                                    blockPos.getY(),
-                                    blockPos.getZ() + 0.5);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY,
+                                    blockPos.getZ() + ((world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ) / 2)
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX(),
-                                    blockPos.getY(),
-                                    blockPos.getZ() + 0.5);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY,
+                                    blockPos.getZ() + ((world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ) / 2)
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 0.5,
-                                    blockPos.getY(),
-                                    blockPos.getZ() + 1);
+                                    blockPos.getX() + ((world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX) / 2),
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ
+                            );
 
-                            // middle
+                            //middle
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX(),
-                                    blockPos.getY() + 0.5,
-                                    blockPos.getZ());
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX,
+                                    blockPos.getY() + (world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY) / 2,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 1,
-                                    blockPos.getY() + 0.5,
-                                    blockPos.getZ());
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX,
+                                    blockPos.getY() + (world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY) / 2,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX(),
-                                    blockPos.getY() + 0.5,
-                                    blockPos.getZ() + 1);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX,
+                                    blockPos.getY() + (world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY) / 2,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 1,
-                                    blockPos.getY() + 0.5,
-                                    blockPos.getZ() + 1);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX,
+                                    blockPos.getY() + (world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minY
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY) / 2,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ
+                            );
 
-                            // top
+                            //top
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX(),
-                                    blockPos.getY() + 1,
-                                    blockPos.getZ());
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 1,
-                                    blockPos.getY() + 1,
-                                    blockPos.getZ());
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX(),
-                                    blockPos.getY() + 1,
-                                    blockPos.getZ() + 1);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 1,
-                                    blockPos.getY() + 1,
-                                    blockPos.getZ() + 1);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ
+                            );
 
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 0.5,
-                                    blockPos.getY() + 1,
-                                    blockPos.getZ());
+                                    blockPos.getX() + ((world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX) / 2),
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 1,
-                                    blockPos.getY() + 1,
-                                    blockPos.getZ() + 0.5);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY,
+                                    blockPos.getZ() + ((world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ) / 2)
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX(),
-                                    blockPos.getY() + 1,
-                                    blockPos.getZ() + 0.5);
+                                    blockPos.getX() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX,
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY,
+                                    blockPos.getZ() + ((world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minZ
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ) / 2)
+                            );
                             spawnDustingParticles(
                                     world,
-                                    blockPos.getX() + 0.5,
-                                    blockPos.getY() + 1,
-                                    blockPos.getZ() + 1);
+                                    blockPos.getX() + ((world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().minX
+                                            + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxX) / 2),
+                                    blockPos.getY() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxY,
+                                    blockPos.getZ() + world.getBlockState(blockPos).getOutlineShape(world, blockPos).getBoundingBox().maxZ
+                            );
                         }
 
                         SoundEvent soundEvent = SoundEvents.BLOCK_SAND_PLACE;
@@ -222,7 +255,9 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
 
                         world.setBlockState(blockPos, ModBlocks.STELLAR_LAMP.getStateWithProperties(world.getBlockState(blockPos)));
                         playerEntity.getItemCooldownManager().set(this, 10);
-                        if (!((PlayerEntity) user).isCreative()) { stack.decrement(1); }
+                        if (!((PlayerEntity) user).isCreative()) {
+                            stack.decrement(1);
+                        }
                     }
 
                 }
@@ -234,8 +269,9 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
         }
     }
 
+
     private HitResult getHitResult(LivingEntity user) {
-        return ProjectileUtil.getCollision(user, (entity) -> !entity.isSpectator() && entity.canHit(), MAX_BRUSH_DISTANCE);
+        return MinecraftClient.getInstance().getCameraEntity().raycast(MAX_BRUSH_DISTANCE, 0.0F, false);
     }
 
     @Override
