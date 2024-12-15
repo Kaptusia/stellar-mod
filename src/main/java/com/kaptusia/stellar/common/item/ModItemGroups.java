@@ -20,8 +20,11 @@ public class ModItemGroups {
                         entries.add(ModItems.STELLAR_POWDER);
                         entries.add(ModItems.STELLAR_LENS);
                         entries.add(ModItems.STELLAR_GLASSES);
-                        entries.add(ModBlocks.STELLAR_GLASS);
+
+
                         entries.add(ModBlocks.STELLAR_LAMP);
+                        entries.add(ModBlocks.HOOK);
+                        entries.add(ModBlocks.STELLAR_GLASS);
 
 
                         entries.add(ModBlocks.KAPTUSIA_PLUSHIE);

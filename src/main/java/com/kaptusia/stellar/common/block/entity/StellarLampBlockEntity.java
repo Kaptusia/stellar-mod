@@ -16,7 +16,7 @@ import java.awt.Color;
 public class StellarLampBlockEntity extends BlockEntity {
 
     public StellarLampBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.STELLAR_LAMP_BLOCK_ENTITY_BLOCK_ENTITY, pos, state);
+        super(ModBlockEntities.STELLAR_LAMP_BLOCK_ENTITY_BLOCK_ENTITY_TYPE, pos, state);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, StellarLampBlockEntity blockEntity) {

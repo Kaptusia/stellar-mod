@@ -18,10 +18,10 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class KaptusiaPlushieBlock extends Block {
+public class PlushieBlock extends Block {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
-    public KaptusiaPlushieBlock(Settings settings) {
+    public PlushieBlock(Settings settings) {
         super(settings);
     }
 

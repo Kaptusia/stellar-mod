@@ -3,13 +3,7 @@ package com.kaptusia.stellar.common.block.custom;
 import com.kaptusia.stellar.common.block.ModBlockEntities;
 import com.kaptusia.stellar.common.block.ModBlocks;
 import com.kaptusia.stellar.common.block.entity.StellarLampBlockEntity;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -33,7 +27,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-public class StellarLampBlock extends BlockWithEntity implements BlockEntityProvider {
+public class StellarLampBlock extends BlockWithEntity implements BlockEntityProvider, Waterloggable {
     public static final BooleanProperty HANGING;
     public static final BooleanProperty WATERLOGGED;
     protected static final VoxelShape STANDING_SHAPE;
@@ -41,6 +35,7 @@ public class StellarLampBlock extends BlockWithEntity implements BlockEntityProv
 
     public StellarLampBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, Boolean.valueOf(false)));
     }
 
 
@@ -114,7 +109,7 @@ public class StellarLampBlock extends BlockWithEntity implements BlockEntityProv
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         // Make sure to check world.isClient if you only want to tick only on serverside.
-        return checkType(type, ModBlockEntities.STELLAR_LAMP_BLOCK_ENTITY_BLOCK_ENTITY, StellarLampBlockEntity::tick);
+        return checkType(type, ModBlockEntities.STELLAR_LAMP_BLOCK_ENTITY_BLOCK_ENTITY_TYPE, StellarLampBlockEntity::tick);
     }
 
     @Override

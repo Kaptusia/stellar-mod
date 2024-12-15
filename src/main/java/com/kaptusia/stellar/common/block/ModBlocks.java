@@ -1,7 +1,8 @@
 package com.kaptusia.stellar.common.block;
 
 import com.kaptusia.stellar.Stellar;
-import com.kaptusia.stellar.common.block.custom.KaptusiaPlushieBlock;
+import com.kaptusia.stellar.common.block.custom.HookBlock;
+import com.kaptusia.stellar.common.block.custom.PlushieBlock;
 import com.kaptusia.stellar.common.block.custom.StellarGlassBlock;
 import com.kaptusia.stellar.common.block.custom.StellarLampBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -31,11 +32,15 @@ public class ModBlocks {
             ));
 
     public static final Block KAPTUSIA_PLUSHIE = registerBlock("kaptusia_plushie",
-            new KaptusiaPlushieBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).nonOpaque()));
+            new PlushieBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).nonOpaque()));
 
     public static final Block STELLAR_LAMP = registerBlock("stellar_lamp",
             new StellarLampBlock(AbstractBlock.Settings.copy(Blocks.LANTERN).nonOpaque().luminance((state) -> 7).strength(0.5F)
             ));
+
+    public static final Block HOOK = registerBlock("hook",
+            new HookBlock(AbstractBlock.Settings.create().solid().requiresTool().strength(1.0F, 2.0F).sounds(BlockSoundGroup.CHAIN).nonOpaque())
+            );
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
