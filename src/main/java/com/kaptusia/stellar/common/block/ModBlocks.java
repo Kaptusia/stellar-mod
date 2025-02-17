@@ -17,7 +17,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 public class ModBlocks {
 
-    public static final Block STELLAR_GLASS = registerBlock(
+    public static final Block STAR_CLEAR_GLASS = registerBlock(
             "stellar_glass",
             new StellarGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)
                     .instrument(Instrument.CHIME)
@@ -34,7 +34,7 @@ public class ModBlocks {
     public static final Block KAPTUSIA_PLUSHIE = registerBlock("kaptusia_plushie",
             new PlushieBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).nonOpaque()));
 
-    public static final Block STELLAR_LAMP = registerBlock("stellar_lamp",
+    public static final Block STAR_INFUSED_LAMP = registerBlock("stellar_lamp",
             new StellarLampBlock(AbstractBlock.Settings.copy(Blocks.LANTERN).nonOpaque().luminance((state) -> 7).strength(0.5F)
             ));
 

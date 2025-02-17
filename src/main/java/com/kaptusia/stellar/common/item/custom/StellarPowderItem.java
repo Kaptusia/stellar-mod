@@ -229,9 +229,37 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
                         soundEvent = SoundEvents.ENTITY_FIREWORK_ROCKET_BLAST;
                         world.playSound(playerEntity, blockPos, soundEvent, SoundCategory.BLOCKS);
 
-                        world.setBlockState(blockPos, ModBlocks.STELLAR_GLASS.getDefaultState());
+                        world.setBlockState(blockPos, ModBlocks.STAR_CLEAR_GLASS.getDefaultState());
                         playerEntity.getItemCooldownManager().set(this, 10);
-                        stack.decrement(1);
+                        if (!((PlayerEntity) user).isCreative()) {
+                            stack.decrement(1);
+                        }
+                    }
+
+                    if (bl2 &&
+                            world.getBlockState(blockPos).getBlock().equals(Blocks.GREEN_WOOL) &&
+                            world.getLightLevel(LightType.SKY, blockPos) == 15 &&
+                            (world.getTimeOfDay() / 1000.0) % 24.0 >= 13 &&
+                            (world.getTimeOfDay() / 1000.0) % 24.0 <= 23
+                    ) {
+                        spawnExplodingParticles(
+                                world,
+                                blockPos.getX() + 0.5,
+                                blockPos.getY() + 0.5,
+                                blockPos.getZ() + 0.5,
+                                3f);
+                        SoundEvent soundEvent = SoundEvents.BLOCK_AMETHYST_BLOCK_RESONATE;
+                        world.playSound(playerEntity, blockPos, soundEvent, SoundCategory.BLOCKS);
+                        soundEvent = SoundEvents.BLOCK_GLASS_BREAK;
+                        world.playSound(playerEntity, blockPos, soundEvent, SoundCategory.BLOCKS);
+                        soundEvent = SoundEvents.ENTITY_FIREWORK_ROCKET_BLAST;
+                        world.playSound(playerEntity, blockPos, soundEvent, SoundCategory.BLOCKS);
+
+                        world.setBlockState(blockPos, ModBlocks.KAPTUSIA_PLUSHIE.getDefaultState());
+                        playerEntity.getItemCooldownManager().set(this, 10);
+                        if (!((PlayerEntity) user).isCreative()) {
+                            stack.decrement(1);
+                        }
                     }
 
                     if (bl2 &&
@@ -253,7 +281,7 @@ public class StellarPowderItem extends BrushItem implements ParticleEmitterHandl
                         soundEvent = SoundEvents.ENTITY_FIREWORK_ROCKET_BLAST;
                         world.playSound(playerEntity, blockPos, soundEvent, SoundCategory.BLOCKS);
 
-                        world.setBlockState(blockPos, ModBlocks.STELLAR_LAMP.getStateWithProperties(world.getBlockState(blockPos)));
+                        world.setBlockState(blockPos, ModBlocks.STAR_INFUSED_LAMP.getStateWithProperties(world.getBlockState(blockPos)));
                         playerEntity.getItemCooldownManager().set(this, 10);
                         if (!((PlayerEntity) user).isCreative()) {
                             stack.decrement(1);

@@ -116,7 +116,7 @@ public class StellarLampBlock extends BlockWithEntity implements BlockEntityProv
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         super.onBreak(world, pos, state, player);
         if (!player.isCreative()) {
-            world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, ModBlocks.STELLAR_LAMP.getPickStack(world, pos, state)));
+            world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, ModBlocks.STAR_INFUSED_LAMP.getPickStack(world, pos, state)));
         }
     }
 }

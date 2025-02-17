@@ -39,7 +39,7 @@ public class AnvilBlockMixin {
             if (entity.getType() == EntityType.ITEM) {
                 if (((ItemEntity) entity).getStack().isOf(ModItems.STELLAR_CRYSTAL)) {
                     entity.kill();
-                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(ModItems.STELLAR_POWDER, ((ItemEntity) entity).getStack().getCount())));
+                    world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(ModItems.STAR_INFUSED_POWDER, ((ItemEntity) entity).getStack().getCount())));
                     spawnExplodingParticles(
                             world,
                             pos.getX() + 0.5,

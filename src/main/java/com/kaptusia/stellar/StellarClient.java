@@ -11,9 +11,9 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 public class StellarClient implements ClientModInitializer {
 
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STELLAR_GLASS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STAR_CLEAR_GLASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.KAPTUSIA_PLUSHIE, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STELLAR_LAMP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STAR_INFUSED_LAMP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HOOK, RenderLayer.getCutout());
 
         BlockEntityRendererFactories.register(ModBlockEntities.HOOK_BLOCK_ENTITY_BLOCK_ENTITY_TYPE, HookBlockEntityRenderer::new);

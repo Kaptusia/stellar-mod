@@ -13,7 +13,7 @@ public class ModBlockEntities {
     public static final BlockEntityType<StellarLampBlockEntity> STELLAR_LAMP_BLOCK_ENTITY_BLOCK_ENTITY_TYPE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
             new Identifier(Stellar.ID, "stellar_lamp"),
             FabricBlockEntityTypeBuilder.create(StellarLampBlockEntity::new,
-                    ModBlocks.STELLAR_LAMP).build());
+                    ModBlocks.STAR_INFUSED_LAMP).build());
 
     public static final BlockEntityType<HookBlockEntity> HOOK_BLOCK_ENTITY_BLOCK_ENTITY_TYPE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
             new Identifier(Stellar.ID, "hook"),

@@ -17,14 +17,16 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.stellar"))
                     .icon(() -> new ItemStack(ModItems.STELLAR_CRYSTAL)).entries((displayContext, entries) -> {
                         entries.add(ModItems.STELLAR_CRYSTAL);
-                        entries.add(ModItems.STELLAR_POWDER);
-                        entries.add(ModItems.STELLAR_LENS);
-                        entries.add(ModItems.STELLAR_GLASSES);
+                        entries.add(ModItems.STAR_INFUSED_POWDER);
+                        entries.add(ModItems.TWIG);
+                        entries.add(ModItems.WAND);
+                        entries.add(ModItems.STAR_CLEAR_LENS);
+                        entries.add(ModItems.STAR_CLEAR_GLASSES);
 
 
-                        entries.add(ModBlocks.STELLAR_LAMP);
                         entries.add(ModBlocks.HOOK);
-                        entries.add(ModBlocks.STELLAR_GLASS);
+                        entries.add(ModBlocks.STAR_INFUSED_LAMP);
+                        entries.add(ModBlocks.STAR_CLEAR_GLASS);
 
 
                         entries.add(ModBlocks.KAPTUSIA_PLUSHIE);

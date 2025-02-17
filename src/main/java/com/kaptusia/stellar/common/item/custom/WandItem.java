@@ -12,16 +12,16 @@ import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import team.lodestar.lodestone.systems.particle.screen.ScreenParticleHolder;
 
-import java.awt.Color;
+import java.awt.*;
 
-public class StellarCrystalItem extends Item implements ParticleEmitterHandler.ItemParticleSupplier {
-    public StellarCrystalItem(Settings settings) {
+public class WandItem extends Item implements ParticleEmitterHandler.ItemParticleSupplier {
+    public WandItem(Settings settings) {
         super(settings);
     }
 
     @Override
     public void spawnLateParticles(ScreenParticleHolder target, World level, float partialTick, ItemStack stack, float x, float y) {
-        if (Math.ceil(Math.random() * 8) == 8 &&
+        if (Math.ceil(Math.random() * 6) == 6 &&
                 (level.getTimeOfDay() / 1000.0) % 24.0 >= 13 &&
                 (level.getTimeOfDay() / 1000.0) % 24.0 <= 23) {
             int colorRandomizerRed = (int) ((Math.random() - 0.5) * 90);
@@ -35,11 +35,11 @@ public class StellarCrystalItem extends Item implements ParticleEmitterHandler.I
                     .setTransparencyData(GenericParticleData.create(1f, 0.9f).build())
                     .setColorData(ColorParticleData.create(startingColor, endingColor).setCoefficient(1.4f).setEasing(Easing.BOUNCE_IN_OUT).build())
                     .setSpinData(SpinParticleData.create(0.2f, 0.4f).setSpinOffset((0.2f) % 6.28f).setEasing(Easing.QUARTIC_IN).build())
-                    .setLifetime(20)
-                    .addMotion(0, -0.12f)
-                    .spawnOnStack((float) (0f + ((Math.random() - 0.5) * 10)), (float) (-1.2f + ((Math.random() - 0.5) * 10)));
-
+                    .setLifetime(18)
+                    .addMotion(0, 0)
+                    .spawnOnStack(3, -3);
 
         }
     }
+
 }
